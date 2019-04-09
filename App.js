@@ -8,6 +8,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 
 import navStyles from "./styles/navStyles";
 import Post from "./Post";
+import Posts from "./Posts";
 
 const client = new ApolloClient({
   link: new HttpLink({
@@ -30,7 +31,7 @@ class App extends React.Component {
     return (
       <ApolloProvider client={client}>
         <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
+          <Posts />
           <Button onPress={this.goToPost} title="Go to Post page" />
         </View>
       </ApolloProvider>

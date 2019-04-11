@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import Post from "./Post";
-import NewPost from "./NewPost";
-import Posts from "./Posts";
+import Post from "./components/posts/Post";
+import NewPost from "./components/posts/NewPost";
+import Posts from "./components/posts/Posts";
 import navStyles from "./styles/navStyles";
 
 class Home extends React.Component {

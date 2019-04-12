@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -7,30 +7,41 @@ import navStyles from "../../styles/navStyles";
 import PostForm from "./PostForm";
 
 class NewPost extends Component {
+  state = {
+    loading: false
+  };
   static navigationOptions = {
     title: "Post",
     ...navStyles
   };
 
   newPost = ({ title, body }) => {
-    console.log(title, body);
-    this.props
-      .newPost({
-        variables: {
-          title,
-          body
-        }
+    const { newPost, navigation } = this.props;
+
+    this.setState({ loading: true });
+    newPost({
+      variables: {
+        title,
+        body
+      }
+    })
+      .then(() => {
+        navigation.goBack();
       })
-      .then(() => {})
       .catch(error => {
         console.log(error);
+        this.setState({ loading: false });
       });
   };
 
   render() {
     return (
       <View>
-        <PostForm onSubmit={this.newPost} />
+        {this.state.loading ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <PostForm onSubmit={this.newPost} />
+        )}
       </View>
     );
   }
@@ -45,5 +56,8 @@ const newPost = gql`
 `;
 
 export default graphql(newPost, {
-  name: "newPost"
+  name: "newPost",
+  options: {
+    refetchQueries: ["postsQuery"]
+  }
 })(NewPost);

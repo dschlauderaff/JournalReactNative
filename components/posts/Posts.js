@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { List, ListItem, Body, Right, Icon } from "native-base";

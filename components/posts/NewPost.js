@@ -11,7 +11,7 @@ class NewPost extends Component {
     loading: false
   };
   static navigationOptions = {
-    title: "Post",
+    title: "New Post",
     ...navStyles
   };
 

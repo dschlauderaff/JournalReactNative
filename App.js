@@ -4,7 +4,7 @@ import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-import Navigator from "./navigator";
+import Navigator from "./Navigator";
 
 export default class App extends React.Component {
   render() {
